@@ -16,7 +16,7 @@ public class Player {
     public String race;
     public String type;
     public int XP;
-    public int level;
+    public int level = 1;
     public int XPtoLevel;
     public int strength;
     public int intellegence;
@@ -27,12 +27,13 @@ public class Player {
         this.name = name.toLowerCase();
         this.race = race.toLowerCase();
         this.type = type.toLowerCase();
+        generateStats();
     }
     public void generateStats()
     {
-        Random Topgenerator = new Random(50);
-        Random MidGenerator = new Random(25);
-        Random LowGenerator = new Random(10);
+        Random Topgenerator = new Random();
+        Random MidGenerator = new Random();
+        Random LowGenerator = new Random();
 
         if (this.type.equals("warrior"))
         {
@@ -115,6 +116,17 @@ public class Player {
 
 
         }
+    }
+
+    public String toString()
+    {
+        String stats = "Your name is " + name + " \n"+
+                "Your level is " + level + "\n" +
+                "Your Strength is " + strength + "\n"+
+                "Your Intelligence is " + intellegence + "\n"+
+                "Your Stamina is " + stamina + "\n";
+
+        return stats;
     }
 
 

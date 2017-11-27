@@ -1,11 +1,12 @@
 package GameLoop;
-
+import player.Player;
 import java.util.Scanner;
 
 /**
  * Created by jwest1 on 11/17/2017.
  */
 public class Thread1 {
+    public Player player;
     public void run()
     {
         System.out.println("Welcome to the game world, follow the instructions ahead.");
@@ -16,5 +17,12 @@ public class Thread1 {
         String Race = userInput.nextLine();
         System.out.println("Enter your class");
         String Class = userInput.nextLine();
+        this.player = new Player(name, Race, Class);
+
+
+    }
+    public Player getPlayer()
+    {
+        return player;
     }
 }

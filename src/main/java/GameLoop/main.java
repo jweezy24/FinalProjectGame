@@ -7,8 +7,16 @@ package GameLoop;
 public class main {
     public static void main(String args[])
     {
-        Thread t = new Thread(new Loop(LoopLinks.thread1));
-        t.start();
+        Loop loop = new Loop();
+        Thread t = new Thread(loop);
+        loop.creatingThreads(LoopLinks.thread1);
+        t.run();
+        Thread t2 = new Thread(loop);
+        loop.creatingThreads(LoopLinks.thread2);
+        t2.run();
+
+
+
     }
 }
 
