@@ -203,6 +203,13 @@ public class Player {
         }
     }
 
+    public boolean isAlive()
+    {
+        if(hp >0 )
+            return true;
+        return false;
+    }
+
     public String toString()
     {
         String stats = "Your name is " + name + " \n"+

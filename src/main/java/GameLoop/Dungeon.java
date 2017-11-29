@@ -48,7 +48,8 @@ class Room
 {
     public List<Enemies> enemies = new ArrayList<Enemies>();
     public boolean isEnemy = false;
-    public boolean chest = false;
+    public Chest chest;
+    public boolean isChest = false;
     public boolean nothing = false;
     public boolean boss = false;
     public int levelRequirement;
@@ -79,36 +80,16 @@ class Room
                 this.enemies = RoomWithEnemies();
                 break;
             case chest:
+                isChest = true;
+                this.chest = RoomWithChests();
                 break;
             case nothing:
-                break;
-            case boss:
                 break;
 
         }
 
     }
 
-    public void createSpecificRoom(Rooms config)
-    {
-        Rooms [] temp = Rooms.values();
-        Random room = new Random();
-        Rooms value = temp[room.nextInt(temp.length-1)-temp.length-1];
-        switch (value){
-            case enemies:
-                System.out.println("Here");
-                this.enemies = RoomWithEnemies();
-                break;
-            case chest:
-                break;
-            case nothing:
-                break;
-            case boss:
-                break;
-
-        }
-
-    }
 
     public List<Enemies> RoomWithEnemies()
     {
@@ -120,6 +101,16 @@ class Room
             enemies.add(new Enemies(this.levelRequirement));
         }
         return enemies;
+
+
+    }
+    public Chest RoomWithChests()
+    {
+        Chest chest = new Chest(this.levelRequirement);
+
+
+
+        return chest;
 
 
     }
@@ -145,6 +136,11 @@ class Room
             {
                 string += enemies.get(i).toString() + "\n";
             }
+        }
+        if(isChest)
+        {
+            string += "\nThis is a room with a chest! \n";
+            string += chest.toString();
         }
         if(boss)
         {
