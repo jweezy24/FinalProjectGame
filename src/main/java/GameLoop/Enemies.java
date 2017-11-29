@@ -35,7 +35,7 @@ public class Enemies {
     {
         String string = "This enemy has: \n" +
                 "Level = " + level + "\n"+
-                "Attack = " + attack + "\n"+
+                "Fight = " + attack + "\n"+
                 "Defense = " + defense + "\n";
         return string;
     }

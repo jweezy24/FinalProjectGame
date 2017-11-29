@@ -3,10 +3,8 @@ import org.omg.CORBA.DynAnyPackage.InvalidValue;
 import org.omg.IOP.CodecPackage.InvalidTypeForEncoding;
 
 import javax.management.modelmbean.InvalidTargetObjectTypeException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+
 
 /**
  * Created by jwest1 on 11/27/2017.
@@ -21,6 +19,12 @@ public class Player {
     public int strength;
     public int intellegence;
     public int stamina;
+    public int hp;
+    public int mp;
+    public int hpMax;
+    public int mpMax;
+    public HashMap raceStats = new HashMap();
+    public List<Integer> digits = new ArrayList<Integer>();
 
     public Player(String name, String race, String type)
     {
@@ -28,6 +32,57 @@ public class Player {
         this.race = race.toLowerCase();
         this.type = type.toLowerCase();
         generateStats();
+        generateRaceStats();
+    }
+    public void generateRaceStats() {
+        raceStats.put(1,11514);
+        raceStats.put(2,42222);
+        raceStats.put(3,15141);
+        String temp;
+        int temp2;
+        if (this.race.equals("orc")){
+            temp = raceStats.get(1).toString();
+            temp2 = Integer.parseInt(temp);
+            gen(temp2);
+            hpMax += digits.get(0);
+            mpMax += digits.get(1);
+            strength += digits.get(2);
+            intellegence += digits.get(3);
+            stamina += digits.get(4);
+            hp = hpMax;
+            mp = mpMax;
+        }
+        if (this.race.equals("human")){
+            temp = raceStats.get(2).toString();
+            temp2 = Integer.parseInt(temp);
+            gen(temp2);
+            hpMax += digits.get(0);
+            mpMax += digits.get(1);
+            strength += digits.get(2);
+            intellegence += digits.get(3);
+            stamina += digits.get(4);
+            hp = hpMax;
+            mp = mpMax;
+        }
+        if (this.race.equals("elf")){
+            temp = raceStats.get(3).toString();
+            temp2 = Integer.parseInt(temp);
+            gen(temp2);
+            hpMax += digits.get(0);
+            mpMax += digits.get(1);
+            strength += digits.get(2);
+            intellegence += digits.get(3);
+            stamina += digits.get(4);
+            hp = hpMax;
+            mp = mpMax;
+        }
+
+    }
+    public void gen(int temp) {
+        while(temp> 0) {
+            digits.add(temp % 10);
+            temp /= 10;
+        }
     }
     public void generateStats()
     {
@@ -40,19 +95,30 @@ public class Player {
             strength = Topgenerator.nextInt(100);
             stamina = MidGenerator.nextInt(50);
             intellegence = LowGenerator.nextInt(25);
-
+            hpMax += 15;
+            mpMax += 0;
+            hp = hpMax;
+            mp = mpMax;
         }
         if(this.type.equals("mage"))
         {
             intellegence = Topgenerator.nextInt(100);
             stamina = MidGenerator.nextInt(50);
             strength = LowGenerator.nextInt(25);
+            hpMax += 5;
+            mpMax += 15;
+            hp = hpMax;
+            mp = mpMax;
         }
         if(this.type.equals("thief"))
         {
             stamina = Topgenerator.nextInt(100);
             intellegence = MidGenerator.nextInt(50);
             strength = LowGenerator.nextInt(25);
+            hpMax += 10;
+            mpMax += 10;
+            hp = hpMax;
+            mp = mpMax;
         }
     }
     public void addXP(int XP)
@@ -62,6 +128,25 @@ public class Player {
         {
             level+=1;
             levelUp();
+            if (race.equals("orc")){
+                hpMax += 4;
+                hp = hpMax;
+                mpMax ++;
+                mp = mpMax;
+            }
+            if (race.equals("human")){
+                hpMax += 3;
+                hp = hpMax;
+                mpMax += 2;
+                mp = mpMax;
+            }
+            if (race.equals("elf")){
+                hpMax += 2;
+                hp = hpMax;
+                mpMax += 4;
+                mp = mpMax;
+            }
+
         }
     }
     public void levelUp()
@@ -124,7 +209,12 @@ public class Player {
                 "Your level is " + level + "\n" +
                 "Your Strength is " + strength + "\n"+
                 "Your Intelligence is " + intellegence + "\n"+
-                "Your Stamina is " + stamina + "\n";
+                "Your Stamina is " + stamina + "\n" +
+                "Your current HP is " + hp + "\n" +
+                "Your Max HP is " + hpMax + "\n" +
+                "Your current MP is " + mp + "\n" +
+                "Your Max MP is " + mpMax + "\n";
+
 
         return stats;
     }
