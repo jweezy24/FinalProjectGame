@@ -1,5 +1,4 @@
 package GameLoop;
-import player.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -136,7 +135,7 @@ class Room
 
     }
 
-    public void playerInRoom(Player player, Narrator nar)
+    public void playerInRoom(player.Player1 player, Narrator nar)
     {
         Scanner userInput = new Scanner(System.in);
         String choice = "";

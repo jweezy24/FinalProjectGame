@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by jwest1 on 11/27/2017.
  */
-public class Player {
+public class Player1 {
     public String name;
     public String race;
     public String type;
@@ -29,7 +29,7 @@ public class Player {
     public List<Integer> digits = new ArrayList<Integer>();
     public List<Item> items = new ArrayList<>();
 
-    public Player(String name, String race, String type)
+    public Player1(String name, String race, String type)
     {
         this.name = name.toLowerCase();
         this.race = race.toLowerCase();

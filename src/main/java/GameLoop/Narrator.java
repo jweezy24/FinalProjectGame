@@ -3,7 +3,6 @@ package GameLoop;
 /**
  * Created by jwest1 on 11/29/2017.
  */
-import player.Player;
 
 public class Narrator {
 
@@ -26,7 +25,7 @@ public class Narrator {
         System.out.println("To continue in the dungeon press enter.");
     }
 
-    public void BattleLines(Player player, Enemies enemy)
+    public void BattleLines(player.Player1 player, Enemies enemy)
     {
        System.out.println("You are in battle!");
        System.out.println("Your health is " + player.hp);
@@ -35,7 +34,7 @@ public class Narrator {
 
     }
 
-    public Item EnemyDefeated(Player player, Enemies enemy)
+    public Item EnemyDefeated(player.Player1 player, Enemies enemy)
     {
         System.out.println("You won!");
         System.out.println("Enemy dropped, " + enemy.deadXP() );
