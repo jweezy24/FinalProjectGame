@@ -1,7 +1,6 @@
 package GameLoop;
-import player.Player;
-import GameLoop.Enemies;
-import player.Spells;
+import Player.Player;
+import Player.Spells;
 import java.util.Scanner;
 //this might need to be moved to thread
 

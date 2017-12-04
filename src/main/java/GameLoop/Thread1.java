@@ -1,5 +1,5 @@
 package GameLoop;
-import player.Player;
+import Player.Player;
 import java.util.Scanner;
 
 /**

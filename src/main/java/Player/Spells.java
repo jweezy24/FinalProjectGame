@@ -1,4 +1,4 @@
-package player;
+package Player;
 
 public class Spells {
     public int damage;

@@ -1,5 +1,9 @@
 package GameLoop;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -10,7 +14,9 @@ public class Item {
     public int strength;
     public int intel;
     public int stamina;
-
+    public int backpackSize;
+    public String equipmentType;
+    public List<String> equipment = Arrays.asList("helmet", "armor", "weapon", "legs", "boots", "backpack");
     public Item(int level)
     {
         this.level = level;
@@ -20,11 +26,15 @@ public class Item {
     public void generateStats()
     {
         Random generator = new Random();
-
+        int temp;
         this.strength = generator.nextInt(level *10 );
         this.intel = generator.nextInt(level *10);
         this.stamina = generator.nextInt(level*10);
-
+        temp = generator.nextInt(5);
+        this.equipmentType = equipment.get(temp);
+        if (equipmentType.equals("backpack")){
+            this.backpackSize = generator.nextInt(20);
+        }
 
     }
     public String toString()
