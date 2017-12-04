@@ -9,16 +9,26 @@ import java.util.Scanner;
  */
 public class Thread3 {
     public Player user;
-    public Thread3(Player player)
+    public WorldGeneration world;
+    public Thread3(Player player , WorldGeneration world)
     {
         user = player;
+        this.world = world;
     }
 
     public void run()
     {
         Scanner userInput = new Scanner(System.in);
+        Narrator narrator = new Narrator();
+        String choice = "";
         while(user.isAlive())
         {
+            narrator.newEvent(world.event);
+            if(world.event.type.toLowerCase().equals("dungeon"))
+            {
+                world.event.dungeon.getRoom();
+            }
+
 
         }
     }

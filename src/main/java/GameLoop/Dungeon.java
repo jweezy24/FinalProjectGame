@@ -1,7 +1,11 @@
 package GameLoop;
+import player.Player;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
+import java.util.Scanner;
+
 /**
  * Created by jwest1 on 11/27/2017.
  */
@@ -25,6 +29,12 @@ public class Dungeon {
             count+=1;
         }
         rooms.add(new Room(this.DUNGEONLEVEL, Rooms.boss));
+    }
+    public Room getRoom()
+    {
+        Room tempRoom = rooms.get(0);
+        rooms.remove(rooms.get(0));
+        return tempRoom;
     }
     public String toString()
     {
@@ -124,6 +134,56 @@ class Room
     public void RoomWithChest()
     {
 
+    }
+
+    public void playerInRoom(Player player, Narrator nar)
+    {
+        Scanner userInput = new Scanner(System.in);
+        String choice = "";
+        Random goesFirst = new Random();
+        int playerAttack = 0;
+        Item item = null;
+
+        if(isEnemy)
+        {
+            for(int i = 0; i < enemies.size(); i++)
+            {
+                enemies.get(i).attackQueue();
+                while(enemies.get(i).alive)
+                {
+                    nar.dungeonLines();
+                    choice = userInput.nextLine();
+                    if(choice.equals("a"))
+                    {
+                        int first = goesFirst.nextInt(1);
+                        if(first == 0)
+                        {
+                            playerAttack = player.Attack();
+                            enemies.get(i).attacked(playerAttack);
+                            if(!enemies.get(i).alive)
+                            {
+                                item = nar.EnemyDefeated(player, enemies.get(i));
+                                if(item != null)
+                                {
+                                    nar.pickUpItem();
+                                    choice = userInput.nextLine();
+                                    if(choice.equals( "e"))
+                                    {
+                                        player.grabItem(item);
+                                    }
+                                }
+                                continue;
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+
+
+        }
     }
 
     public String toString()
