@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by jwest1 on 11/27/2017.
  */
-public class Player1 {
+public class User {
     public String name;
     public String race;
     public String type;
@@ -28,14 +28,16 @@ public class Player1 {
     public HashMap raceStats = new HashMap();
     public List<Integer> digits = new ArrayList<Integer>();
     public List<Item> items = new ArrayList<>();
+    public Inventory inv;
 
-    public Player1(String name, String race, String type)
+    public User(String name, String race, String type)
     {
         this.name = name.toLowerCase();
         this.race = race.toLowerCase();
         this.type = type.toLowerCase();
         generateStats();
         generateRaceStats();
+
     }
     public void generateRaceStats() {
         raceStats.put(1,11514);
@@ -98,33 +100,68 @@ public class Player1 {
             strength = Topgenerator.nextInt(100);
             stamina = MidGenerator.nextInt(50);
             intellegence = LowGenerator.nextInt(25);
-            hpMax += 15;
-            mpMax += 0;
+            hpMax += strength*2;
+            mpMax += intellegence/2;
             hp = hpMax;
             mp = mpMax;
-            AP = (strength/stamina);
+            AP = (strength /(( intellegence/stamina)+1));
+            XPtoLevel = level*2;
         }
         if(this.type.equals("mage"))
         {
             intellegence = Topgenerator.nextInt(100);
             stamina = MidGenerator.nextInt(50);
             strength = LowGenerator.nextInt(25);
-            hpMax += 5;
-            mpMax += 15;
+            hpMax += strength;
+            mpMax += intellegence;
             hp = hpMax;
             mp = mpMax;
-            AP = (intellegence/stamina);
+            AP = (intellegence *( 1/(strength+1)));
+            XPtoLevel = level*2;
         }
         if(this.type.equals("thief"))
         {
             stamina = Topgenerator.nextInt(100);
             intellegence = MidGenerator.nextInt(50);
             strength = LowGenerator.nextInt(25);
-            hpMax += 10;
-            mpMax += 10;
+            hpMax += strength;
+            mpMax += intellegence/2;
             hp = hpMax;
             mp = mpMax;
-            AP = (stamina/intellegence);
+            AP = (stamina *( 1/(strength+1)));
+            XPtoLevel = level*2;
+        }
+        inv = new Inventory(this);
+    }
+
+    public void reStat()
+    {
+        if (this.type.equals("warrior"))
+        {
+            hpMax += strength;
+            mpMax += intellegence/2;
+            hp = hpMax;
+            mp = mpMax;
+            AP = (strength *( 1/(intellegence+1)));
+            XPtoLevel = level*2;
+        }
+        if(this.type.equals("mage"))
+        {
+
+            hpMax += strength/2;
+            mpMax += intellegence;
+            hp = hpMax;
+            mp = mpMax;
+            AP = (intellegence *( 1/(strength+1)));
+            XPtoLevel = level*2;
+        }
+        if(this.type.equals("thief")) {
+            hpMax += strength / 2;
+            mpMax += intellegence / 2;
+            hp = hpMax;
+            mp = mpMax;
+            AP = (stamina * (1 / (strength + 1)));
+            XPtoLevel = level * 2;
         }
     }
     public void addXP(int XP)
@@ -157,14 +194,14 @@ public class Player1 {
     }
     public void levelUp()
     {
-        Random skillGenereation = new Random(10);
+        Random skillGenereation = new Random();
         int choice = 0;
-        int skillPoints = level * skillGenereation.nextInt();
+        int skillPoints = level * skillGenereation.nextInt(10) + level;
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the skill then the amount (strength 10) this will add 10 skill points to strength");
         System.out.println("How to pick the stat you want, type strength, intel for intelligence, or stamina");
         String [] input = new String[2];
-        while(skillPoints >= 0)
+        while(skillPoints > 0)
         {
             System.out.println("Choose a place to put skill points, you have  " + skillPoints + " points left");
             String place = scan.nextLine();
@@ -190,16 +227,23 @@ public class Player1 {
             {
                 if(input[0].toLowerCase().equals("strength"))
                 {
+
+                    skillPoints -= choice;
                     this.strength += choice;
+
 
                 }
                 if(input[0].toLowerCase().equals("intel"))
                 {
+
+                    skillPoints -= choice;
                     this.intellegence += choice;
 
                 }
                 if(input[0].toLowerCase().equals("stamina"))
                 {
+
+                    skillPoints -= choice;
                     this.stamina += choice;
 
                 }
@@ -207,24 +251,44 @@ public class Player1 {
 
 
         }
+        reStat();
+        XP = 0;
+
     }
 
     public boolean isAlive()
     {
-        if(hp >0 )
+        if(hp > 0 )
+        {
+            //System.out.print("Here");
             return true;
+        }
         return false;
     }
 
     public int Attack()
     {
-
+        if(AP == 0)
+        {
+            AP = 1;
+        }
+        if(AP < 0)
+        {
+            AP = AP *-1;
+        }
         return AP;
     }
 
     public void grabItem(Item item)
     {
-        items.add(item);
+        Scanner input = new Scanner(System.in);
+        inv.addItem(item);
+        System.out.println("If you want to equip the item found press q.");
+        if(input.nextLine().toLowerCase().equals("q"))
+        {
+            inv.addEquipment(item);
+        }
+
     }
 
     public String toString()

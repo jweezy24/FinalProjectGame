@@ -1,4 +1,4 @@
-package Player;
+package player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,10 +13,14 @@ public class Inventory {
     public int backpackSize = 10;
     public Map inv = new HashMap(backpackSize);
     public Map equipment = new HashMap(6);
-    public Player player;
+    public User player;
     public boolean backP;
     public Scanner input = new Scanner(System.in);
 
+    public Inventory(User player)
+    {
+        this.player = player;
+    }
 
 
     public void addItem(Item item){

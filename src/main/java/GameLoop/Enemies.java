@@ -10,25 +10,26 @@ public class Enemies {
     public int defense =0;
     public int health = 1;
     public boolean alive = true;
-    public FightQueue<Integer> attacks = new FightQueue<>(100);
+    public FightQueue<Integer> attacks;
 
     public Enemies(int level)
     {
      this.level = level;
      generateStats();
+     this.attacks = new FightQueue<>(100);
     }
     public void generateStats()
     {
         Random bound = new Random();
-        attack = bound.nextInt(10*level)+level*2;
-        defense = bound.nextInt(10*level)+level*2;
-        health = bound.nextInt(20*level)+level*2;
+        attack = bound.nextInt(10*level)+1;
+        defense = bound.nextInt(10*level)+1;
+        health = bound.nextInt(20*level)+1;
 
     }
     public void attacked(int attackPoints)
     {
-        attackPoints = attackPoints-defense;
-        health-= attackPoints;
+        attackPoints = (attackPoints+defense)/2;
+        health -= attackPoints;
         if(health<= 0)
         {
          alive = false;
@@ -39,16 +40,18 @@ public class Enemies {
     {
         Random generateMove = new Random();
         Random generateDamage = new Random();
-        int choice  = generateMove.nextInt(1);
-        for(int i = 0; i < attacks.size(); i++)
+        int choice  = 0;
+        Integer defense = 0;
+        for(int i = 0; i < 30; i++)
         {
+            choice  = generateMove.nextInt(2);
             if(choice == 1)
             {
-                int damage = generateDamage.nextInt(attack)+1;
+                Integer damage = generateDamage.nextInt(attack)+1;
                 attacks.offer(damage);
             }else
                 {
-                    attacks.offer(0);
+                    attacks.offer(defense);
                 }
         }
     }

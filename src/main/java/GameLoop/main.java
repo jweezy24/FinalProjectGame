@@ -11,6 +11,7 @@ public class main {
         Thread t = new Thread(loop);
         loop.creatingThreads(LoopLinks.thread1);
         t.run();
+
         Thread t2 = new Thread(loop);
         loop.creatingThreads(LoopLinks.thread2);
         t2.run();

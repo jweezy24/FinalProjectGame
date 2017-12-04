@@ -1,6 +1,6 @@
 package GameLoop;
-import Player.Player;
-import Player.Spells;
+import player.User;
+import player.Spells;
 import java.util.Scanner;
 //this might need to be moved to thread
 
@@ -9,7 +9,7 @@ public class Fight {
     public int mp;
     public int enemyDefense;
     public int strength;
-    public Player player;
+    public User player;
     public Enemies enemy;
     public Scanner userInput = new Scanner(System.in);
     public String spell;

@@ -1,5 +1,5 @@
 package GameLoop;
-import Player.Player;
+import player.User;
 
 import java.lang.Thread;
 
@@ -10,7 +10,7 @@ public class Loop extends Thread{
     public Thread1 thread1;
     public Thread2 thread2;
     public Thread3 thread3;
-    public Player player;
+    public User player;
     public WorldGeneration world;
 
 
@@ -26,18 +26,19 @@ public class Loop extends Thread{
                 thread1 = new Thread1();
                 thread1.run();
                 player = thread1.getPlayer();
-                System.out.println(player);
+                //System.out.println(player);
                 break;
             case thread2:
                 this.run("Thread 2");
                 thread2 = new Thread2(player.level);
                 thread2.run();
                 world = thread2.getWorld();
-                System.out.println(world);
+                //System.out.println(world);
                 break;
             case thread3:
                 this.run("Thread 3");
                 thread3 = new Thread3(player,world);
+                thread3.run();
                 break;
 
 

@@ -33,6 +33,7 @@ public class FightQueue<E> implements SimpleQueue<E> {
     public boolean offer(final E obj) {
         if (this.size < this.capacity) {
             this.data[this.size] = obj;
+
             this.size++;
             return true;
         } else {
