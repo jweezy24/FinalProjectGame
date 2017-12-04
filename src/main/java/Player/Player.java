@@ -1,5 +1,9 @@
-package Player;
+package player;
+import GameLoop.Item;
+import org.omg.CORBA.DynAnyPackage.InvalidValue;
+import org.omg.IOP.CodecPackage.InvalidTypeForEncoding;
 
+import javax.management.modelmbean.InvalidTargetObjectTypeException;
 import java.util.*;
 
 
@@ -20,8 +24,10 @@ public class Player {
     public int mp;
     public int hpMax;
     public int mpMax;
+    public int AP;
     public HashMap raceStats = new HashMap();
     public List<Integer> digits = new ArrayList<Integer>();
+    public List<Item> items = new ArrayList<>();
 
     public Player(String name, String race, String type)
     {
@@ -96,6 +102,7 @@ public class Player {
             mpMax += 0;
             hp = hpMax;
             mp = mpMax;
+            AP = (strength/stamina);
         }
         if(this.type.equals("mage"))
         {
@@ -106,6 +113,7 @@ public class Player {
             mpMax += 15;
             hp = hpMax;
             mp = mpMax;
+            AP = (intellegence/stamina);
         }
         if(this.type.equals("thief"))
         {
@@ -116,6 +124,7 @@ public class Player {
             mpMax += 10;
             hp = hpMax;
             mp = mpMax;
+            AP = (stamina/intellegence);
         }
     }
     public void addXP(int XP)
@@ -205,6 +214,17 @@ public class Player {
         if(hp >0 )
             return true;
         return false;
+    }
+
+    public int Attack()
+    {
+
+        return AP;
+    }
+
+    public void grabItem(Item item)
+    {
+        items.add(item);
     }
 
     public String toString()

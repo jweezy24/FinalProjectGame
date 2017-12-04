@@ -36,6 +36,9 @@ public class Loop extends Thread{
                 System.out.println(world);
                 break;
             case thread3:
+                this.run("Thread 3");
+                thread3 = new Thread3(player,world);
+                break;
 
 
 
