@@ -10,6 +10,8 @@ public class Events {
     public int level;
     public String type;
     public Dungeon dungeon;
+    public Town town;
+
     public Events(int level)
     {
         this.level = level;
@@ -17,13 +19,20 @@ public class Events {
     }
     public void generateEvents()
     {
-        Random event = new Random(3);
-        int generation = 1;
+        Random event = new Random();
+        //int generation = event.nextInt();
+        int generation = 2;
         if(generation == 1)
         {
             type = "Dungeon";
             this.dungeon = new Dungeon(level);
             dungeonList.add(this.dungeon);
+        }
+        if(generation == 2)
+        {
+            type = "Town";
+            this.town = new Town();
+
         }
     }
     public String toString()
