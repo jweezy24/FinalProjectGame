@@ -5,6 +5,7 @@ import org.omg.IOP.CodecPackage.InvalidTypeForEncoding;
 
 import javax.management.modelmbean.InvalidTargetObjectTypeException;
 import java.util.*;
+import GameLoop.Fight;
 
 
 /**
@@ -29,6 +30,7 @@ public class User {
     public List<Integer> digits = new ArrayList<Integer>();
     public List<Item> items = new ArrayList<>();
     public Inventory inv;
+    public Fight fight;
 
     public User(String name, String race, String type)
     {
@@ -98,7 +100,7 @@ public class User {
         if (this.type.equals("warrior"))
         {
             strength = Topgenerator.nextInt(100);
-            stamina = MidGenerator.nextInt(50);
+            stamina = MidGenerator.nextInt(50)+1;
             intellegence = LowGenerator.nextInt(25);
             hpMax += strength*2;
             mpMax += intellegence/2;
@@ -277,6 +279,14 @@ public class User {
             AP = AP *-1;
         }
         return AP;
+    }
+    public int Spell(){
+       int damage = fight.useSpell(type);
+       return damage;
+    }
+
+    public void inv(){
+        inv.checkInventory();
     }
 
     public void grabItem(Item item)

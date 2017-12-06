@@ -16,7 +16,7 @@ public class Fight {
     public Spells spells;
 
 
-    public void useSpell() {
+    public int useSpell(String charClass) {
         boolean temp = true;
         mp = player.mp;
         enemyDefense = enemy.defense;
@@ -30,15 +30,15 @@ public class Fight {
             }
             if (spell.equals("magicMissile")) {
                 damage = spells.maggicMissile(mp, enemyDefense);
-                break;
+                return damage;
             }
             if (spell.equals("slash")){
                 damage = spells.slash(player.strength,enemyDefense);
-                break;
+                return damage;
             }
             if (spell.equals("sneakAttack")) {
                 damage = spells.sneakAttack(player.stamina,player.strength,enemyDefense);
-                break;
+                return damage;
             }
 
 
@@ -48,6 +48,7 @@ public class Fight {
                 continue;
             }
         }
+        return 0;
     }
 
 }

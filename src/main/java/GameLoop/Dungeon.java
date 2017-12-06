@@ -135,8 +135,7 @@ class Room
 
     }
 
-    public void playerInRoom(User player, Narrator nar)
-    {
+    public void playerInRoom(User player, Narrator nar) {
         Scanner userInput = new Scanner(System.in);
         String choice = "";
         Enemies tempEnmey;
@@ -144,104 +143,121 @@ class Room
         int playerAttack = 0;
         Item item = null;
 
-        if(isEnemy || boss)
-        {
-            for(int i = 0; i < enemies.size(); i++)
-            {
+        if (isEnemy || boss) {
+            for (int i = 0; i < enemies.size(); i++) {
                 tempEnmey = enemies.get(i);
                 tempEnmey.attackQueue();
-                while(tempEnmey.alive && player.isAlive())
-                {
-                    if(isEnemy)
+                while (tempEnmey.alive && player.isAlive()) {
+                    if (isEnemy)
                         nar.BattleLines(player, tempEnmey);
-                    if(boss)
+                    if (boss)
                         nar.BossRoom(player, tempEnmey);
                     choice = userInput.nextLine();
-                    if(choice.equals("a"))
-                    {
+                    if (choice.equals("a")) {
                         int first = goesFirst.nextInt(2);
-                        if(first == 0)
-                        {
+                        if (first == 0) {
                             playerAttack = player.Attack();
                             tempEnmey.attacked(playerAttack);
 
                             player.hp -= tempEnmey.attacks.poll();
-                            if(!tempEnmey.alive)
-                            {
+                            if (!tempEnmey.alive) {
 
                                 item = nar.EnemyDefeated(player, tempEnmey);
-                                if(item != null)
-                                {
+                                if (item != null) {
                                     nar.pickUpItem();
                                     choice = userInput.nextLine();
-                                    if(choice.equals( "e"))
-                                    {
+                                    if (choice.equals("e")) {
                                         player.grabItem(item);
                                     }
                                 }
                                 continue;
                             }//if the enemy dies
 
-                        }else
-                            {
-                                playerAttack = player.Attack();
-                                player.hp -= tempEnmey.attacks.poll();
-                                tempEnmey.attacked(playerAttack);
-                                if(!tempEnmey.alive)
-                                {
+                        } else {
+                            playerAttack = player.Attack();
+                            player.hp -= tempEnmey.attacks.poll();
+                            tempEnmey.attacked(playerAttack);
+                            if (!tempEnmey.alive) {
 
-                                    item = nar.EnemyDefeated(player, tempEnmey);
-                                    if(item != null)
-                                    {
-                                        nar.pickUpItem();
-                                        choice = userInput.nextLine();
-                                        if(choice.equals( "e"))
-                                        {
-                                            player.grabItem(item);
-                                        }
+                                item = nar.EnemyDefeated(player, tempEnmey);
+                                if (item != null) {
+                                    nar.pickUpItem();
+                                    choice = userInput.nextLine();
+                                    if (choice.equals("e")) {
+                                        player.grabItem(item);
                                     }
-                                    continue;
-                                }//if the enemy dies
+                                }
+                                continue;
+                            }//if the enemy dies
 
-                            }//turn calculator
+                        }//turn calculator
 
                     }// if the user chooses to attack
+                    if (choice.equals("a")) {
+                        int first = goesFirst.nextInt(2);
+                        if (first == 0) {
+                            playerAttack = player.Spell();
+                            tempEnmey.attacked(playerAttack);
 
+                            player.hp -= tempEnmey.attacks.poll();
+                            if (!tempEnmey.alive) {
+
+                                item = nar.EnemyDefeated(player, tempEnmey);
+                                if (item != null) {
+                                    nar.pickUpItem();
+                                    choice = userInput.nextLine();
+                                    if (choice.equals("e")) {
+                                        player.grabItem(item);
+                                    }
+                                }
+                                continue;
+                            }//if the enemy dies
+
+                        } else {
+                            playerAttack = player.Attack();
+                            player.hp -= tempEnmey.attacks.poll();
+                            tempEnmey.attacked(playerAttack);
+                            if (!tempEnmey.alive) {
+
+                                item = nar.EnemyDefeated(player, tempEnmey);
+                                if (item != null) {
+                                    nar.pickUpItem();
+                                    choice = userInput.nextLine();
+                                    if (choice.equals("e")) {
+                                        player.grabItem(item);
+                                    }
+                                }
+                                continue;
+                            }//if the enemy dies
+                        }//turn calculator
+                    }// if the user chooses to attack
                 }//end of the while loop
             }// end of the for loop
-
-
         }// end of enemy event handler
-        if(isChest)
-        {
+        if (isChest) {
             nar.ChestRoom();
             String input = userInput.nextLine();
 
-            if(input.toLowerCase().equals("e"))
-            {
-                for(int i = 0; i < chest.items.size(); i++)
-                {
+            if (input.toLowerCase().equals("e")) {
+                for (int i = 0; i < chest.items.size(); i++) {
                     System.out.println("You found " + chest.items.get(i).equipmentType + " press i to inspect or enter to skip");
                     input = userInput.nextLine();
-                    if(input.toLowerCase().equals("i"))
-                    {
+                    if (input.toLowerCase().equals("i")) {
                         System.out.println(chest.items.get(i));
                         System.out.println("If you would like to take the item press e.");
                         input = userInput.nextLine();
-                        if(input.toLowerCase().equals("e"))
-                        {
+                        if (input.toLowerCase().equals("e")) {
                             player.grabItem(chest.items.get(i));
                         }
                     }// inspecting the armor
                 }// iterate through the items in the chest
             }//if the user chooses to open it
-
         }// if chest
-        if(nothing)
-        {
+        if (nothing) {
             System.out.println("There is nothing in this room press any key to continue.");
         }
     }
+
 
     public String toString()
     {

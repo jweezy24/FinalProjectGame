@@ -1,6 +1,6 @@
 package GameLoop;
 import player.User;
-
+import player.Inventory;
 import java.util.Scanner;
 
 /**

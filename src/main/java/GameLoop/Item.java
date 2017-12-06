@@ -39,7 +39,8 @@ public class Item {
     }
     public String toString()
     {
-        String stats = "Item level is " + level + "\n" +
+        String stats = "Item is a " + equipmentType + "\n" +
+                "Item level is " + level + "\n" +
                 "Item Strength is " + strength + "\n"+
                 "Item Intelligence is " + intel + "\n"+
                 "Item Stamina is " + stamina + "\n";
