@@ -37,6 +37,8 @@ public class Thread3 {
                 }
             }
 
+            world = new WorldGeneration(user.level);
+
 
         }
     }

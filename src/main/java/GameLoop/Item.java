@@ -15,12 +15,18 @@ public class Item {
     public int intel;
     public int stamina;
     public int backpackSize;
+    public int healing = 0;
     public String equipmentType;
     public List<String> equipment = Arrays.asList("helmet", "armor", "weapon", "legs", "boots", "backpack");
     public Item(int level)
     {
         this.level = level;
         generateStats();
+    }
+    //This is only to be called by shops, pubs and Inns.
+    public Item()
+    {
+        generateConsumable();
     }
 
     public void generateStats()
@@ -37,6 +43,26 @@ public class Item {
         }
 
     }
+
+    public void generateConsumable()
+    {
+        Random choice = new Random();
+        int type = choice.nextInt(1);
+        switch (type)
+        {
+            case 1:
+                equipmentType = consumables.potion.toString();
+                healing = 50;
+                break;
+            case 0:
+                equipmentType = consumables.food.toString();
+                healing = 20;
+                break;
+
+
+        }
+
+    }
     public String toString()
     {
         String stats = "Item level is " + level + "\n" +
@@ -49,3 +75,8 @@ public class Item {
     }
 
 }
+
+enum consumables
+        {
+            potion,food,
+        }

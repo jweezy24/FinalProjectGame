@@ -98,7 +98,7 @@ public class User {
         if (this.type.equals("warrior"))
         {
             strength = Topgenerator.nextInt(100);
-            stamina = MidGenerator.nextInt(50);
+            stamina = MidGenerator.nextInt(50)+1;
             intellegence = LowGenerator.nextInt(25);
             hpMax += strength*2;
             mpMax += intellegence/2;
