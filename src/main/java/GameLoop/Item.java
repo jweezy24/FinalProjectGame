@@ -17,6 +17,7 @@ public class Item {
     public int backpackSize;
     public int healing = 0;
     public String equipmentType;
+    public int price;
     public List<String> equipment = Arrays.asList("helmet", "armor", "weapon", "legs", "boots", "backpack");
     public Item(int level)
     {
@@ -36,6 +37,7 @@ public class Item {
         this.strength = generator.nextInt(level *10 );
         this.intel = generator.nextInt(level *10);
         this.stamina = generator.nextInt(level*10);
+        this.price = (strength+intel+stamina)/3;
         temp = generator.nextInt(5);
         this.equipmentType = equipment.get(temp);
         if (equipmentType.equals("backpack")){
@@ -53,10 +55,12 @@ public class Item {
             case 1:
                 equipmentType = consumables.potion.toString();
                 healing = 50;
+                price = 10;
                 break;
             case 0:
                 equipmentType = consumables.food.toString();
                 healing = 20;
+                price = 5;
                 break;
 
 

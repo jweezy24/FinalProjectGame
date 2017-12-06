@@ -20,15 +20,15 @@ public class Events {
     public void generateEvents()
     {
         Random event = new Random();
-        //int generation = event.nextInt();
-        int generation = 2;
+        int generation = event.nextInt(2);
+        //int generation = 2;
         if(generation == 1)
         {
             type = "Dungeon";
             this.dungeon = new Dungeon(level);
             dungeonList.add(this.dungeon);
         }
-        if(generation == 2)
+        if(generation == 0)
         {
             type = "Town";
             this.town = new Town();

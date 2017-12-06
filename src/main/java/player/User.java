@@ -28,9 +28,10 @@ public class User {
     public int AP;
     public HashMap raceStats = new HashMap();
     public List<Integer> digits = new ArrayList<Integer>();
-    public List<Item> items = new ArrayList<>();
     public Inventory inv;
     public Fight fight;
+    public int money = 100;
+
 
     public User(String name, String race, String type)
     {
@@ -144,7 +145,7 @@ public class User {
             mpMax += intellegence/2;
             hp = hpMax;
             mp = mpMax;
-            AP = (strength *( 1/(intellegence+1)));
+            AP = (strength + intellegence + stamina)/6;
             XPtoLevel = level*2;
         }
         if(this.type.equals("mage"))

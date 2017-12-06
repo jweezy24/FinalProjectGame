@@ -54,7 +54,7 @@ public class LinkedStack<E> implements IStack<E> {
         // TODO implement using an ArrayList preallocated with the right size
         // TODO add any instance variable(s) required to support this
         List<E> list = new ArrayList<E>();
-        System.out.println(iter(top, list));
+        iter(top, list);
 
         return list;
     }

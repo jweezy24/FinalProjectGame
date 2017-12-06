@@ -46,6 +46,8 @@ public class Narrator {
         System.out.println("Enemy dropped, " + xp + " xp");
         player.addXP(xp);
         Item item = enemy.deadItem();
+        int money = enemy.deadCash();
+        player.money += money;
         if(item != null)
         {
             System.out.println("Enemy dropped, " + item );
@@ -77,6 +79,10 @@ public class Narrator {
         System.out.println("You found a chest! To open it press e.");
     }
 
+    public void EnterTown(){
+        System.out.println("You have found a town! See if you can find any new items");
+        System.out.println("Select where you would like to go in the town.");
+    }
 
     public void pickUpItem()
     {

@@ -34,7 +34,15 @@ public class Thread3 {
                     Room currentRoom = world.event.dungeon.getRoom(i);
                     narrator.RoomInfo(currentRoom, i);
                     currentRoom.playerInRoom(user, narrator);
+                    if(user.hp <= 0 )
+                    {
+                        break;
+                    }
                 }
+            }
+            if(world.event.type.toLowerCase().equals("town"))
+            {
+                world.event.town.playerInTown(user);
             }
 
             world = new WorldGeneration(user.level);

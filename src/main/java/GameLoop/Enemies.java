@@ -78,6 +78,12 @@ public class Enemies {
                 return null;
             }
     }
+    public int deadCash()
+    {
+        Random generateDrop = new Random();
+        int drop = generateDrop.nextInt(15);
+        return drop;
+    }
 
     public String toString()
     {

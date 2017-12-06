@@ -193,7 +193,7 @@ class Room
                         }//turn calculator
 
                     }// if the user chooses to attack
-                    if (choice.equals("a")) {
+                    if (choice.equals("s")) {
                         int first = goesFirst.nextInt(2);
                         if (first == 0) {
                             playerAttack = player.Spell();
