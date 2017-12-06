@@ -57,7 +57,7 @@ public class Narrator {
     public void RoomInfo(Room room, int index)
     {
         Scanner input = new Scanner(System.in);
-        System.out.println("You are in room " + index + " press i if you want to what is in the room." );
+        System.out.println("You are in room " + index + " press i if you want to see what is in the room." );
         if(input.nextLine().toLowerCase().equals("i"))
         {
             System.out.println(room);

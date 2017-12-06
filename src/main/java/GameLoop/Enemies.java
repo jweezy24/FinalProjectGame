@@ -58,9 +58,9 @@ public class Enemies {
 
     public int deadXP()
     {
-        int xp = 0;
+        int xp = 1;
         Random generateXp = new Random();
-        xp = generateXp.nextInt(level*3);
+        xp = generateXp.nextInt(level*3)+level*2;
         return xp;
     }
 

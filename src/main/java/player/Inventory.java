@@ -38,12 +38,20 @@ public class Inventory {
         }
     }
 
-    public int removeItem(){
+    public void checkInventory(){
         System.out.println(toAString());
+    }
+    public void removeItem(){
+        System.out.println(toAString());
+        System.out.println("Please enter the name of the item you want to remove.");
         String temp;
         temp = input.nextLine();
-        int i = 0;
-        return 0;
+        for(int i = 0;i>inv.size();i++){
+            if (inv.get(i).equals(temp)){
+                inv.remove(i);
+                break;
+            }
+        }
     }
     public String toAString(){
         String temp = " ";
