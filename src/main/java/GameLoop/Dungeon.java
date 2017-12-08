@@ -196,7 +196,7 @@ class Room
                     if (choice.equals("s")) {
                         int first = goesFirst.nextInt(2);
                         if (first == 0) {
-                            playerAttack = player.Spell();
+                            playerAttack = player.Spell(tempEnmey);
                             tempEnmey.attacked(playerAttack);
 
                             player.hp -= tempEnmey.attacks.poll();
@@ -214,7 +214,7 @@ class Room
                             }//if the enemy dies
 
                         } else {
-                            playerAttack = player.Attack();
+                            playerAttack = player.Spell(tempEnmey);
                             player.hp -= tempEnmey.attacks.poll();
                             tempEnmey.attacked(playerAttack);
                             if (!tempEnmey.alive) {

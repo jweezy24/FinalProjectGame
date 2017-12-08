@@ -1,4 +1,5 @@
 package player;
+import GameLoop.Enemies;
 import GameLoop.Item;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 import org.omg.IOP.CodecPackage.InvalidTypeForEncoding;
@@ -85,6 +86,7 @@ public class User {
             mp = mpMax;
         }
 
+
     }
     public void gen(int temp) {
         while(temp> 0) {
@@ -135,6 +137,7 @@ public class User {
             XPtoLevel = level*2;
         }
         inv = new Inventory(this);
+        this.fight = new Fight(this);
     }
 
     public void reStat()
@@ -166,6 +169,7 @@ public class User {
             AP = (stamina * (1 / (strength + 1)));
             XPtoLevel = level * 2;
         }
+        this.fight = new Fight(this);
     }
     public void addXP(int XP)
     {
@@ -281,7 +285,8 @@ public class User {
         }
         return AP;
     }
-    public int Spell(){
+    public int Spell(Enemies enemy){
+        fight.setEnemy(enemy);
        int damage = fight.useSpell(type);
        return damage;
     }

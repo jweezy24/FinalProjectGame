@@ -15,6 +15,18 @@ public class Fight {
     public String spell;
     public Spells spells;
 
+    public Fight(User player)
+    {
+        this.player = player;
+        this.spells = new Spells();
+
+    }
+
+    public void setEnemy(Enemies enemy)
+    {
+        this.enemy = enemy;
+    }
+
 
     public int useSpell(String charClass) {
         boolean temp = true;
@@ -24,21 +36,22 @@ public class Fight {
             System.out.println("Please write what spell or skill you want to use." +
             "\n" + "Or write skills to see available skills and spells.");
             spell = userInput.nextLine();
-            if (spell.equals("skills")){
-                spells.availableSpells();
+            System.out.println(spell);
+            if (spell.toLowerCase().equals("skills")){
+                System.out.println(spells.availableSpells());
                 continue;
             }
             if (spell.equals("magicMissile")) {
                 damage = spells.maggicMissile(mp, enemyDefense);
-                return damage;
+                break;
             }
             if (spell.equals("slash")){
                 damage = spells.slash(player.strength,enemyDefense);
-                return damage;
+                break;
             }
             if (spell.equals("sneakAttack")) {
                 damage = spells.sneakAttack(player.stamina,player.strength,enemyDefense);
-                return damage;
+                break;
             }
 
 
@@ -48,7 +61,7 @@ public class Fight {
                 continue;
             }
         }
-        return 0;
+        return damage;
     }
 
 }
