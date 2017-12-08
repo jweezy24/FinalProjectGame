@@ -18,7 +18,7 @@ public class Thread3 {
 
     public void run()
     {
-        Scanner userInput = new Scanner(System.in);
+        UserInput userInput = new UserInput(user);
         Narrator narrator = new Narrator();
         String choice = "";
         while(user.isAlive())
@@ -49,5 +49,7 @@ public class Thread3 {
 
 
         }
+
+        System.exit(1);
     }
 }

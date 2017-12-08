@@ -314,10 +314,9 @@ public class User {
                 "Your Strength is " + strength + "\n"+
                 "Your Intelligence is " + intellegence + "\n"+
                 "Your Stamina is " + stamina + "\n" +
-                "Your current HP is " + hp + "\n" +
-                "Your Max HP is " + hpMax + "\n" +
-                "Your current MP is " + mp + "\n" +
-                "Your Max MP is " + mpMax + "\n";
+                "Your current HP is " + hp + "/" + hpMax+ "\n" +
+                "Your current MP is " + mp + "/" + mpMax+ "\n" +
+                "You have $" + money;
 
 
         return stats;

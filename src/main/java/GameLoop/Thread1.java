@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class Thread1 {
     public User player;
+    public Display display;
     public void run()
     {
         System.out.println("Welcome to the game world, follow the instructions ahead.");
@@ -16,6 +17,7 @@ public class Thread1 {
         System.out.println("Enter your race." + " You can pick orc, human, or elf");
         String Race = userInput.nextLine();
         System.out.println("Enter your class" + " You can pick warrior, mage, or thief");
+        display = new Display("start");
         String Class = userInput.nextLine();
         this.player = new User(name, Race, Class);
 

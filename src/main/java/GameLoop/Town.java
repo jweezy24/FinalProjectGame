@@ -13,7 +13,7 @@ public class Town {
     //public User player;
     public LinkedStack<Item> [] shopItems = new LinkedStack[3];
     public int InnPrice=0;
-    public UserInput input = new UserInput();
+
 
 
     public Town()
@@ -62,7 +62,7 @@ public class Town {
         int ammount = 1;
         System.out.println("You have " + player.money + " dollars");
         System.out.println("Welcome to my shop, please let me know what you like!");
-        UserInput input = new UserInput();
+        UserInput input = new UserInput(player);
         String selection = "";
         while(!selection.toLowerCase().equals("x")) {
             System.out.println("To observe the items in the shop, press i if you would like to leave press x.");
@@ -107,6 +107,7 @@ public class Town {
     }
     public void insideInn(User player)
     {
+        UserInput input = new UserInput();
         System.out.println("Welcome to the Inn!");
         System.out.println("To sleep here it will cost " + InnPrice + " dollars");
         System.out.println("To stay the night press e, to leave press x");
@@ -126,17 +127,17 @@ public class Town {
 
     public void playerInTown(User player)
     {
-        UserInput input = new UserInput();
+        UserInput input = new UserInput(player);
         mapOfTown();
         String choice = input.Scan();
-        if(choice.equals("1"))
-        {
-            insideShop(player);
-        }
-        if(choice.equals("2"))
-        {
-            insideInn(player);
-        }
+
+            if (choice.equals("1")) {
+                insideShop(player);
+            }
+            if (choice.equals("2")) {
+                insideInn(player);
+            }
+
 
     }
 }

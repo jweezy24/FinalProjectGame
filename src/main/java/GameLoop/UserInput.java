@@ -1,18 +1,31 @@
 package GameLoop;
 
+import player.User;
+
 import java.util.Scanner;
 
 public class UserInput {
     public Scanner input = new Scanner(System.in);
+    public User player;
 
+    public UserInput()
+    {
+
+    }
+
+    public UserInput(User player)
+    {
+        this.player = player;
+    }
 
     public String Scan()
     {
         String information = input.nextLine();
-        if(information.equals("help"))
+        if(information.equals("info"))
         {
-            System.out.println("This is the help menu");
-            return null;
+            System.out.println("Your Character.");
+            new Display(player);
+            this.Scan();
         }
         return information;
     }
@@ -46,6 +59,7 @@ public class UserInput {
             }
             System.out.println("That is not a number, please try again");
         }
+
         return null;
     }
 }

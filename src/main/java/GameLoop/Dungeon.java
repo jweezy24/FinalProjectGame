@@ -136,7 +136,7 @@ class Room
     }
 
     public void playerInRoom(User player, Narrator nar) {
-        Scanner userInput = new Scanner(System.in);
+        UserInput userInput = new UserInput(player);
         String choice = "";
         Enemies tempEnmey;
         Random goesFirst = new Random();
@@ -152,7 +152,7 @@ class Room
                         nar.BattleLines(player, tempEnmey);
                     if (boss)
                         nar.BossRoom(player, tempEnmey);
-                    choice = userInput.nextLine();
+                    choice = userInput.Scan();
                     if (choice.equals("a")) {
                         int first = goesFirst.nextInt(2);
                         if (first == 0) {
@@ -165,7 +165,7 @@ class Room
                                 item = nar.EnemyDefeated(player, tempEnmey);
                                 if (item != null) {
                                     nar.pickUpItem();
-                                    choice = userInput.nextLine();
+                                    choice = userInput.Scan();
                                     if (choice.equals("e")) {
                                         player.grabItem(item);
                                     }
@@ -182,7 +182,7 @@ class Room
                                 item = nar.EnemyDefeated(player, tempEnmey);
                                 if (item != null) {
                                     nar.pickUpItem();
-                                    choice = userInput.nextLine();
+                                    choice = userInput.Scan();
                                     if (choice.equals("e")) {
                                         player.grabItem(item);
                                     }
@@ -205,7 +205,7 @@ class Room
                                 item = nar.EnemyDefeated(player, tempEnmey);
                                 if (item != null) {
                                     nar.pickUpItem();
-                                    choice = userInput.nextLine();
+                                    choice = userInput.Scan();
                                     if (choice.equals("e")) {
                                         player.grabItem(item);
                                     }
@@ -222,7 +222,7 @@ class Room
                                 item = nar.EnemyDefeated(player, tempEnmey);
                                 if (item != null) {
                                     nar.pickUpItem();
-                                    choice = userInput.nextLine();
+                                    choice = userInput.Scan();
                                     if (choice.equals("e")) {
                                         player.grabItem(item);
                                     }
@@ -236,16 +236,16 @@ class Room
         }// end of enemy event handler
         if (isChest) {
             nar.ChestRoom();
-            String input = userInput.nextLine();
+            String input = userInput.Scan();
 
             if (input.toLowerCase().equals("e")) {
                 for (int i = 0; i < chest.items.size(); i++) {
                     System.out.println("You found " + chest.items.get(i).equipmentType + " press i to inspect or enter to skip");
-                    input = userInput.nextLine();
+                    input = userInput.Scan();
                     if (input.toLowerCase().equals("i")) {
                         System.out.println(chest.items.get(i));
                         System.out.println("If you would like to take the item press e.");
-                        input = userInput.nextLine();
+                        input = userInput.Scan();
                         if (input.toLowerCase().equals("e")) {
                             player.grabItem(chest.items.get(i));
                         }
