@@ -267,6 +267,8 @@ public class User {
     return AP;
   }
 
+  //TODO Balance player leveling and stats.
+
   public int Score(int dungeonCount)
   {
     int score = level * dungeonCount * AP;
