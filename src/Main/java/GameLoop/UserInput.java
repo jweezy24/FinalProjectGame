@@ -24,8 +24,9 @@ public class UserInput {
     return information;
   }
 
-  public String[] levelUp()
+  public String[] levelUp(User player)
   {
+    this.player = player;
     String[] input = new String[2];
     String userInput = this.Scan();
     if(userInput.contains(" "))

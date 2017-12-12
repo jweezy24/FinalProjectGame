@@ -44,8 +44,8 @@ public class Narrator {
     return item;
   }
 
-  public void RoomInfo(Room room, int index) {
-    UserInput input = new UserInput();
+  public void RoomInfo(User player, Room room, int index) {
+    UserInput input = new UserInput(player);
     System.out.println(
         "You are in room " + index + " press i if you want to see what is in the room.");
     if (input.Scan().toLowerCase().equals("i")) {

@@ -200,7 +200,7 @@ public class User {
           "Choose a place to put skill points, you have  " + skillPoints + " points left");
 
       try {
-        input = scan.levelUp();
+        input = scan.levelUp(this);
       } catch (ArrayIndexOutOfBoundsException e) {
         System.out.println("Please enter the what you want correctly (stat points)");
       }
@@ -265,6 +265,13 @@ public class User {
       AP = AP * -1;
     }
     return AP;
+  }
+
+  public int Score(int dungeonCount)
+  {
+    int score = level * dungeonCount * AP;
+    return score;
+
   }
 
   public int Spell(Enemies enemy) {

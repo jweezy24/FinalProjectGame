@@ -26,7 +26,7 @@ public class Display extends JFrame {
       frame.add(panel);
 
       panel.add(label);
-      System.out.println("Before Thread");
+
 
       frame.getContentPane().add(panel);
       Thread d = new Thread(new ShowImages(frame));
@@ -66,7 +66,7 @@ public class Display extends JFrame {
       frame.add(panel);
 
       panel.add(label);
-      System.out.println("Before Thread");
+
 
       frame.getContentPane().add(panel);
       thread = new Thread(new ShowImages(frame));

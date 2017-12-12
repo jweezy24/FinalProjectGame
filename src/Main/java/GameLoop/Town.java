@@ -72,7 +72,7 @@ public class Town {
         }
         if(num > shopItems.length)
         {
-          while(num > shopItems.length || num == -1)
+          while(num > shopItems.length || num != -1)
           {
             System.out.println("Please choose a number corresponding to the item you would like." +
                     "If you changed your mind enter -1.");

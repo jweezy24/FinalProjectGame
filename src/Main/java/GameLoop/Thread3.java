@@ -25,13 +25,18 @@ public class Thread3 {
         if(dungeonCount >= 6)
         {
           System.out.println("You have completed the game!");
-          break;
+          System.out.println("Your score was, " + user.Score(dungeonCount));
+          System.out.println("Press any key to exit.");
+          UserInput input = new UserInput();
+          input.Scan();
+          System.exit(1);
+
         }
         for (int i = 0; i < world.event.dungeon.rooms.size(); i++) {
           // System.out.println("Here");
 
           Room currentRoom = world.event.dungeon.getRoom(i);
-          narrator.RoomInfo(currentRoom, i);
+          narrator.RoomInfo(user,currentRoom, i);
           currentRoom.playerInRoom(user, narrator);
           if (user.hp <= 0) {
             break;
@@ -45,8 +50,11 @@ public class Thread3 {
       world = new WorldGeneration(user.level);
     }
 
-    new Display("death");
+    System.out.println("You died.");
+    System.out.println("Your score was, " + user.Score(dungeonCount));
     System.out.println("Press any key to exit.");
+    UserInput input = new UserInput();
+    input.Scan();
     System.exit(1);
   }
 }

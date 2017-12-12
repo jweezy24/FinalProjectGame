@@ -42,7 +42,10 @@ public class Item {
 
   public void generateConsumable() {
     Random choice = new Random();
-    int type = choice.nextInt(1);
+    int type = choice.nextInt(3);
+    int level = choice.nextInt(50) + 1;
+    this.level = level;
+    int temp = choice.nextInt(5);
     switch (type) {
       case 1:
         equipmentType = consumables.potion.toString();
@@ -53,6 +56,11 @@ public class Item {
         equipmentType = consumables.food.toString();
         healing = 20;
         price = 5;
+        break;
+      case 2:
+        equipmentType = equipment.get(temp);
+        generateStats();
+        price = level*10;
         break;
     }
   }

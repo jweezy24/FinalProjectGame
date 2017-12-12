@@ -7,14 +7,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
-        classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
+        //classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'com.github.ben-manes.versions'
-apply plugin: 'com.github.sherter.google-java-format'
+//apply plugin: 'com.github.sherter.google-java-format'
 //sourceSets.main.java.srcDirs = ['src']
 
 libsDirName = 'lib' // simple workaround for error in startScripts task
@@ -48,6 +48,6 @@ run {
     standardOutput = System.out
 }
 
-googleJavaFormat {
-    toolVersion = '1.4'
-}
+//googleJavaFormat {
+  //  toolVersion = '1.4'
+//}
