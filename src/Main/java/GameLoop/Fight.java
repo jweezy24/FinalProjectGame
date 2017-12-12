@@ -42,7 +42,7 @@ public class Fight {
         continue;
       }
       if (spell.equals("magicMissile")) {
-        damage = spells.maggicMissile(mp, enemyDefense);
+        damage = spells.maggicMissile(mp, enemyDefense, player.intellegence);
         break;
       }
       if (spell.equals("slash")) {

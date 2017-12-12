@@ -119,7 +119,7 @@ public class User {
       stamina = Topgenerator.nextInt(100);
       intellegence = MidGenerator.nextInt(50);
       strength = LowGenerator.nextInt(25);
-      hpMax += strength;
+      hpMax += strength*2;
       mpMax += intellegence / 2;
       hp = hpMax;
       mp = mpMax;
@@ -136,7 +136,7 @@ public class User {
       mpMax += intellegence / 2;
       hp = hpMax;
       mp = mpMax;
-      AP = (strength + intellegence + stamina) / 6;
+      AP = (strength - intellegence + stamina) / 6;
       XPtoLevel = level * 2;
     }
     if (this.type.equals("mage")) {
@@ -153,7 +153,7 @@ public class User {
       mpMax += intellegence / 2;
       hp = hpMax;
       mp = mpMax;
-      AP = (stamina * (1 / (strength + 1)));
+      AP = (stamina + (strength / (2)));
       XPtoLevel = level * 2;
     }
     this.fight = new Fight(this);

@@ -76,7 +76,7 @@ public class UserInput {
   public String[] playerGeneration()
   {
     String[] returns = new String[3];
-    System.out.println("Welcome to the game world, follow the instructions ahead.");
+    System.out.println("Welcome to Dungeon Crawler, follow the instructions ahead.");
     Scanner userInput = new Scanner(System.in);
     System.out.println("Enter your name");
     String name = userInput.nextLine();
@@ -105,7 +105,7 @@ public class UserInput {
         System.out.println("Please enter either, mage, thief, or warrior.");
         Class = input.nextLine();
       }
-      returns[1] = Class;
+      returns[2] = Class;
     }
 
     return returns;

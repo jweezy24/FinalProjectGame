@@ -6,7 +6,7 @@ import player.User;
 public class Narrator {
 
   public Narrator() {
-    System.out.println("Welcome to Dungeon Crawler!");
+    System.out.println("Welcome to the game world!");
   }
 
   public void newEvent(Events event) {

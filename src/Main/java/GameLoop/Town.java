@@ -111,6 +111,7 @@ public class Town {
 
           } else {
             System.out.println("You have selected too many Items, please enter another number.");
+            ammount = input.numberScan();
           }
         }
       }
