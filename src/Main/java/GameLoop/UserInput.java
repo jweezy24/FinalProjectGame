@@ -24,23 +24,18 @@ public class UserInput {
     return information;
   }
 
-  public String[] levelUp(User player)
-  {
+  public String[] levelUp(User player) {
     this.player = player;
     String[] input = new String[2];
     String userInput = this.Scan();
-    if(userInput.contains(" "))
-    {
+    if (userInput.contains(" ")) {
       input = userInput.split(" ");
-    }else
-      {
-        while(!userInput.contains(" "))
-        {
-          System.out.println("Please enter what you choice as '(skill) (amount)'");
-          userInput = this.Scan();
-        }
+    } else {
+      while (!userInput.contains(" ")) {
+        System.out.println("Please enter what you choice as '(skill) (amount)'");
+        userInput = this.Scan();
       }
-
+    }
 
     return input;
   }
@@ -73,8 +68,7 @@ public class UserInput {
     return null;
   }
 
-  public String[] playerGeneration()
-  {
+  public String[] playerGeneration() {
     String[] returns = new String[3];
     System.out.println("Welcome to Dungeon Crawler, follow the instructions ahead.");
     Scanner userInput = new Scanner(System.in);
@@ -84,11 +78,14 @@ public class UserInput {
 
     System.out.println("Enter your race." + " You can pick orc, human, or elf");
     String Race = userInput.nextLine();
-    if(Race.toLowerCase().equals("orc")||Race.toLowerCase().equals("human")||Race.toLowerCase().equals("elf"))
-    {
+    if (Race.toLowerCase().equals("orc")
+        || Race.toLowerCase().equals("human")
+        || Race.toLowerCase().equals("elf")) {
       returns[1] = Race;
-    }else{
-      while(!(Race.toLowerCase().equals("orc")||Race.toLowerCase().equals("human")||Race.toLowerCase().equals("elf"))) {
+    } else {
+      while (!(Race.toLowerCase().equals("orc")
+          || Race.toLowerCase().equals("human")
+          || Race.toLowerCase().equals("elf"))) {
         System.out.println("Please enter either, human, orc, or elf.");
         Race = input.nextLine();
       }
@@ -97,11 +94,14 @@ public class UserInput {
 
     System.out.println("Enter your class" + " You can pick warrior, mage, or thief");
     String Class = userInput.nextLine();
-    if(Class.toLowerCase().equals("mage")||Class.toLowerCase().equals("thief")||Class.toLowerCase().equals("warrior"))
-    {
+    if (Class.toLowerCase().equals("mage")
+        || Class.toLowerCase().equals("thief")
+        || Class.toLowerCase().equals("warrior")) {
       returns[2] = Class;
-    }else {
-      while (!(Class.toLowerCase().equals("mage") || Class.toLowerCase().equals("thief") || Class.toLowerCase().equals("warrior"))) {
+    } else {
+      while (!(Class.toLowerCase().equals("mage")
+          || Class.toLowerCase().equals("thief")
+          || Class.toLowerCase().equals("warrior"))) {
         System.out.println("Please enter either, mage, thief, or warrior.");
         Class = input.nextLine();
       }

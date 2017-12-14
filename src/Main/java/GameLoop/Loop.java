@@ -37,6 +37,6 @@ public class Loop extends Thread {
   }
 
   public void run(String thread) {
-    System.out.println("Running " + thread);
+    System.out.println("");
   }
 }

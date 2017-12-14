@@ -70,31 +70,26 @@ public class Town {
             num = input.numberScan();
           }
         }
-        if(num > shopItems.length)
-        {
-          while(num > shopItems.length || num != -1)
-          {
-            System.out.println("Please choose a number corresponding to the item you would like." +
-                    "If you changed your mind enter -1.");
+        if (num > shopItems.length) {
+          while (num > shopItems.length || num != -1) {
+            System.out.println(
+                "Please choose a number corresponding to the item you would like."
+                    + "If you changed your mind enter 0.");
             num = input.numberScan();
           }
-
         }
 
-        if (num == 100000) {
+        if (num == 0) {
           break;
         }
 
-
         while (ammount != 0) {
-          if (num < shopItems.length && num >=0) {
+          if (num < shopItems.length && num >= 0) {
             System.out.println(
                 "How many would you like to purchase? If you changed you mind enter 0.");
             ammount = input.numberScan();
-            if(ammount > shopItems[num].asList().size()-1)
-            {
-              while(ammount > shopItems[num].asList().size()-1)
-              {
+            if (ammount > shopItems[num].asList().size() - 1) {
+              while (ammount > shopItems[num].asList().size() - 1) {
                 System.out.println("Please enter an amount the shop has.");
                 ammount = input.numberScan();
               }
@@ -124,7 +119,7 @@ public class Town {
     System.out.println("To sleep here it will cost " + InnPrice + " dollars");
     System.out.println("To stay the night press e, to leave press x");
     String choice = input.Scan();
-    if (choice.equals("e")) {
+    if (choice.equals("e") && player.money >= InnPrice) {
       player.money -= InnPrice;
       System.out.println("You stayed the night at a Inn, your HP is back to full hp");
       player.hp = player.hpMax;
@@ -140,7 +135,7 @@ public class Town {
     UserInput input = new UserInput(player);
     mapOfTown();
     String choice = input.Scan();
-    while(!choice.equals("x")) {
+    while (!choice.equals("x")) {
 
       if (choice.equals("1")) {
         insideShop(player);
@@ -148,9 +143,9 @@ public class Town {
       if (choice.equals("2")) {
         insideInn(player);
       }
-      System.out.println("Enter 1 to visit the shop, enter 2 to visit the inn, " +
-              "to leave the town press x.");
-       choice = input.Scan();
+      System.out.println(
+          "Enter 1 to visit the shop, enter 2 to visit the inn, " + "to leave the town press x.");
+      choice = input.Scan();
     }
   }
 }

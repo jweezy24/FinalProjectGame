@@ -4,7 +4,6 @@ import GameLoop.Enemies;
 import GameLoop.Fight;
 import GameLoop.Item;
 import GameLoop.UserInput;
-
 import java.util.*;
 
 /** Created by jwest1 on 11/27/2017. */
@@ -119,7 +118,7 @@ public class User {
       stamina = Topgenerator.nextInt(100);
       intellegence = MidGenerator.nextInt(50);
       strength = LowGenerator.nextInt(25);
-      hpMax += strength*2;
+      hpMax += strength * 2;
       mpMax += intellegence / 2;
       hp = hpMax;
       mp = mpMax;
@@ -212,18 +211,15 @@ public class User {
             "The value you entered is not a integer, the correct way to enter is (skill points)");
         continue;
       }
-      if(!(input[0].toLowerCase().equals("strength")
-              || input[0].toLowerCase().equals("intel")
-              || input[0].toLowerCase().equals("stamina")))
-      {
-        while(!(input[0].toLowerCase().equals("strength")
-                || input[0].toLowerCase().equals("intel")
-                || input[0].toLowerCase().equals("stamina")))
-        {
+      if (!(input[0].toLowerCase().equals("strength")
+          || input[0].toLowerCase().equals("intel")
+          || input[0].toLowerCase().equals("stamina"))) {
+        while (!(input[0].toLowerCase().equals("strength")
+            || input[0].toLowerCase().equals("intel")
+            || input[0].toLowerCase().equals("stamina"))) {
           System.out.println("Please enter either, intel, strength, or stamina.");
           input[0] = scan.Scan();
         }
-
       }
       if (input[0].toLowerCase().equals("strength")
           || input[0].toLowerCase().equals("intel")
@@ -267,13 +263,11 @@ public class User {
     return AP;
   }
 
-  //TODO Balance player leveling and stats.
+  // TODO Balance player leveling and stats.
 
-  public int Score(int dungeonCount)
-  {
+  public int Score(int dungeonCount) {
     int score = level * dungeonCount * AP;
     return score;
-
   }
 
   public int Spell(Enemies enemy) {
@@ -324,9 +318,9 @@ public class User {
             + "\n"
             + "You have $"
             + money
-            +"\n"
-            +"Your current inventory is:"
-            +inv.toString();
+            + "\n"
+            + "Your current inventory is:"
+            + inv.toString();
 
     return stats;
   }

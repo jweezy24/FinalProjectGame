@@ -1,6 +1,5 @@
 package GameLoop;
 
-import java.util.Scanner;
 import player.User;
 
 /** Created by jwest1 on 11/17/2017. */

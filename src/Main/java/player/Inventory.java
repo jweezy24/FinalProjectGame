@@ -52,7 +52,7 @@ public class Inventory {
   public String toAString() {
     String temp = " ";
     for (int i = 0; i < inv.size(); i++) {
-      temp +=  inv.get(i) + " ";
+      temp += inv.get(i) + " ";
     }
     return temp;
   }
@@ -62,8 +62,9 @@ public class Inventory {
     for (int i = 0; i < inv.size(); i++) {
       temp += inv.get(i) + " <br>";
     }
-    if(inv.size() == 0)
-    {temp = "\nempty";}
+    if (inv.size() == 0) {
+      temp = "\nempty";
+    }
     return temp;
   }
 

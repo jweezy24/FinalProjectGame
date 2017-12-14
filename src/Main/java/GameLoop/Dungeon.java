@@ -217,8 +217,9 @@ class Room {
           input = userInput.Scan();
           if (input.toLowerCase().equals("i")) {
             System.out.println(chest.items.get(i));
-            System.out.println("If you would like to take the item press e. " +
-                    "If you don't want the item press any key to continue");
+            System.out.println(
+                "If you would like to take the item press e. "
+                    + "If you don't want the item press any key to continue");
             input = userInput.Scan();
             if (input.toLowerCase().equals("e")) {
               player.grabItem(chest.items.get(i));

@@ -60,7 +60,7 @@ public class Item {
       case 2:
         equipmentType = equipment.get(temp);
         generateStats();
-        price = level*10;
+        price = level * 10;
         break;
     }
   }

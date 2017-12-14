@@ -16,7 +16,7 @@ public class Spells {
     if (mp < mpCost) {
       return -1;
     }
-    damage = 10*(intel/9) - defense;
+    damage = 10 * (intel / 9) - defense;
     return damage;
   }
 
@@ -24,7 +24,7 @@ public class Spells {
     if (strength < defense) {
       return -1;
     }
-    return strength+6 - defense;
+    return strength + 6 - defense;
   }
 
   public int sneakAttack(int stamina, int strength, int defense) {

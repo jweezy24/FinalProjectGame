@@ -27,7 +27,6 @@ public class Display extends JFrame {
 
       panel.add(label);
 
-
       frame.getContentPane().add(panel);
       Thread d = new Thread(new ShowImages(frame));
       d.run();
@@ -67,7 +66,6 @@ public class Display extends JFrame {
 
       panel.add(label);
 
-
       frame.getContentPane().add(panel);
       thread = new Thread(new ShowImages(frame));
       thread.run();
@@ -102,11 +100,9 @@ public class Display extends JFrame {
 
       panel.add(label);
 
-
       frame.getContentPane().add(panel);
       thread = new Thread(new ShowImages(frame));
       thread.run();
-
     }
   }
 }
@@ -120,9 +116,7 @@ class ShowImages extends Thread {
 
   public void run() {
 
-
-      frame.pack();
-      frame.setVisible(true);
-
+    frame.pack();
+    frame.setVisible(true);
   }
 }
