@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WorldTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-12-14T22:31:39" hostname="MSI" time="0.014">
+  <properties/>
+  <testcase name="testEnemies" classname="WorldTests" time="0.003"/>
+  <testcase name="testTown" classname="WorldTests" time="0.003"/>
+  <testcase name="testWorldGeneration" classname="WorldTests" time="0.002"/>
+  <testcase name="testDungeon" classname="WorldTests" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
