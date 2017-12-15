@@ -47,6 +47,13 @@ run {
     standardInput = System.in
     standardOutput = System.out
 }
+<<<<<<< Updated upstream
 googleJavaFormat {
     toolVersion = '1.4'
 }
+=======
+
+//googleJavaFormat {
+   //toolVersion = '1.4'
+//}
+>>>>>>> Stashed changes
